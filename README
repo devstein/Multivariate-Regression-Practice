@@ -103,7 +103,7 @@ SHOWDOWN_DT3_TEST_ACCURACY_STDDEV: 0.07937455
 # Copy and paste your one-line matrix equation for computing the closed form solution
 # to linear regression (e.g., Line 171 of test_linreg_univariate.py or Line 51 of 
 # test_linreg_multivariate.py)
-LINREGIMPLEMENTATION_CLOSEDFORM: thetaClosedForm = np.dot(np.linalg.inv(( np.dot(np.transpose(X), X) ) ), np.transpose(X) ) * y
+LINREGIMPLEMENTATION_CLOSEDFORM: thetaClosedForm = np.dot(np.linalg.pinv(( np.dot(np.transpose(X), X) ) ), np.transpose(X) ) * y
  
  
  
@@ -115,7 +115,7 @@ LINREGIMPLEMENTATION_CLOSEDFORM: thetaClosedForm = np.dot(np.linalg.inv(( np.dot
 #######################################################################################
 
 # Approximately how many hours did it take you to complete this assignment?
-FEEDBACK_NUM_HOURS: 10
+FEEDBACK_NUM_HOURS: 14
 
 # Please list any typos / errors you noticed in the assignment description or skeleton code
 FEEDBACK_ERRORS: |

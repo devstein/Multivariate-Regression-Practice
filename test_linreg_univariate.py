@@ -168,7 +168,7 @@ if __name__ == "__main__":
     visualizeObjective(lr_model,theta1_vals, theta2_vals, X, y)
 
     # Compute the closed form solution in one line of code
-    theta_closed_form = np.dot(np.linalg.inv(( np.dot(np.transpose(X), X) ) ), np.transpose(X) ) * y 
+    theta_closed_form = np.dot(np.linalg.pinv(( np.dot(np.transpose(X), X) ) ), np.transpose(X) ) * y 
     # TODO:  replace "0" with closed form solution
     print "theta_closed_form: ", theta_closed_form
     

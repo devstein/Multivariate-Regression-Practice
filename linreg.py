@@ -34,16 +34,14 @@ class LinearRegression:
         for i in xrange(self.n_iter):
             self.JHist.append( (self.computeCost(X, y, theta), theta) )
             print "Iteration: ", i+1, " Cost: ", self.JHist[i][0], " Theta: ", theta
-            # TODO:  add update equation here
-            # tempTheta = np.copy(theta)
-            # for j in range(d):
-            #     sum = 0
-            #     for k in range(n):
-            #         sum = sum + (np.dot(X[k], theta) - y[k]) * X[k,j]
-            #     sum = sum * self.alpha / n
-            #     tempTheta[j] = tempTheta[j] - sum
-            # theta = np.copy(tempTheta)
-            theta =  np.dot(np.linalg.inv(( np.dot(np.transpose(X), X) ) ), np.transpose(X)) * y
+
+            #theta = LA.pinv(np.transpose(X) * X) * np.transpose(X) * y
+            product = np.dot(np.transpose(X),(X*theta - y))
+            product = (product*self.alpha)/n
+            theta = theta - product
+            #theta = (XTrans X)^-1 XTrans y
+
+            #tempTheta = tempTheta - (1/alpha*n) * (X * theta - y) * X
         return theta
     
 
@@ -58,15 +56,9 @@ class LinearRegression:
           a scalar value of the cost  
               ** make certain you don't return a matrix with just one value! **
         '''
-
-        # for i in range(n):
-        #     cost += ( np.dot(X[i], theta) - y[i] ) ** 2
-        # cost = cost/(2*n)
-
         n = len(X)
-
-        cost = (np.transpose(np.dot(X,theta) - y) * (np.dot(X,theta)- y) ) / (2*n)
-
+        #cost = (np.transpose(np.dot(X,theta) - y) * (np.dot(X,theta)- y) ) / (2*n)
+        cost = (np.transpose( (X*theta) - y) * ( (X *theta)- y) ) / (2*n)
 
         return cost.item(0)
 
