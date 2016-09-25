@@ -35,11 +35,9 @@ class LinearRegression:
             self.JHist.append( (self.computeCost(X, y, theta), theta) )
             print "Iteration: ", i+1, " Cost: ", self.JHist[i][0], " Theta: ", theta
 
-            #theta = LA.pinv(np.transpose(X) * X) * np.transpose(X) * y
             product = np.dot(np.transpose(X),(X*theta - y))
             product = (product*self.alpha)/n
             theta = theta - product
-            #theta = (XTrans X)^-1 XTrans y
 
             #tempTheta = tempTheta - (1/alpha*n) * (X * theta - y) * X
         return theta
@@ -84,5 +82,6 @@ class LinearRegression:
             X is a n-by-d numpy matrix
         Returns:
             an n-dimensional numpy vector of the predictions
+
         '''
-        # TODO:  add prediction function here
+        return X*self.theta
