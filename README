@@ -58,7 +58,7 @@ SOURCESCONSULTED: |
 DT_INFO_GAIN_OUTLOOK: 0.247
 
 # Problem 1a: information gain for the humidity attribute  (only your final answer)
-DT_INFO_GAIN_HUMIDITY: 0.045
+DT_INFO_GAIN_HUMIDITY: 0.045328
 
 # Problem 1b: gain ratio for the outlook attribute  (only your final answer)
 DT_GAIN_RATIO_OUTLOOK: 0.156
